@@ -25,7 +25,7 @@ class LoginPage extends StatelessWidget {
         children: <Widget>[
           SafeArea(
             child: Container(
-              height: 200.0,
+              height: 180.0,
             ),
           ),
         
@@ -89,7 +89,7 @@ class LoginPage extends StatelessWidget {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 20.0),
       child: TextField(
-        obscureText: false,
+        obscureText: true,
         keyboardType: TextInputType.emailAddress,
         decoration: InputDecoration(
           icon: Icon(Icons.lock_outline, color: Colors.deepPurple,),
@@ -124,7 +124,7 @@ class LoginPage extends StatelessWidget {
     final size = MediaQuery.of(context).size;
 
     final fondoMorado = Container(
-      height: size.height * 0.4,
+      height: size.height * 0.40,
       width: double.infinity,
       decoration: BoxDecoration(
         gradient: LinearGradient(
@@ -152,10 +152,6 @@ class LoginPage extends StatelessWidget {
         fondoMorado,
         Positioned(child: circulo, top: 90.0, left: 30.0),
         Positioned(child: circulo, top: -40.0, right: -30.0),
-        Positioned(child: circulo, bottom: -50.0, right: -10.0),
-        Positioned(child: circulo, bottom: 120.0, right: 20.0),
-        Positioned(child: circulo, bottom: -50.0, left: -20.0),
-
         Container(
           padding: EdgeInsets.only(top: 60.0),
           child: Column(
