@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:fluttervalidarformulariofh/src/bloc/provider.dart';
+// import 'package:fluttervalidarformulariofh/src/bloc/provider.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key key}) : super(key: key);
@@ -7,21 +7,25 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    final bloc = Provider.of(context);
+    // final bloc = Provider.of(context);
 
     return Scaffold(
       appBar: AppBar(
         title: Text('Home'),
       ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          Text('Email: ${bloc.email}'),
-          Divider(),
-          Text('Password: ${bloc.password}'),
-        ],
-      ),
+      body: Container(),
+      floatingActionButton: _crearBoton(context),
     );
+  }
+
+
+  _crearBoton(BuildContext context) {
+
+    return FloatingActionButton(
+      backgroundColor: Color.fromRGBO(169, 80, 162, 1.0),
+      child: Icon(Icons.add),
+      onPressed: () => Navigator.pushNamed(context, 'producto'),
+    );
+
   }
 }

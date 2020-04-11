@@ -38,7 +38,7 @@ class LoginPage extends StatelessWidget {
             margin: EdgeInsets.only(bottom: 20.0),
             decoration: BoxDecoration(
               color: Colors.white,
-              borderRadius: BorderRadius.circular(5.0),
+              borderRadius: BorderRadius.circular(15.0),
               boxShadow: [
                 BoxShadow(
                   color: Colors.black26,
@@ -61,7 +61,7 @@ class LoginPage extends StatelessWidget {
             ),
           ),
         
-          Text('¿Olvido la contraseña?'),
+          Text('¿Olvido la contraseña?', style: TextStyle(color: Color.fromRGBO(169, 80, 162, 1.0))),
           SizedBox(height: 100.0,)
         ],
       ),
@@ -80,7 +80,7 @@ class LoginPage extends StatelessWidget {
           child: TextField(
             keyboardType: TextInputType.emailAddress,
             decoration: InputDecoration(
-              icon: Icon(Icons.alternate_email, color: Colors.deepPurple,),
+              icon: Icon(Icons.alternate_email, color: Color.fromRGBO(169, 80, 162, 1.0),),
               hintText: 'ejemplo@correo.com',
               labelText: 'Correo electrónico',
               counterText: snapshot.data,
@@ -106,7 +106,7 @@ class LoginPage extends StatelessWidget {
             obscureText: true,
             keyboardType: TextInputType.emailAddress,
             decoration: InputDecoration(
-              icon: Icon(Icons.lock_outline, color: Colors.deepPurple,),
+              icon: Icon(Icons.lock_outline, color: Color.fromRGBO(169, 80, 162, 1.0),),
               labelText: 'Contraseña',
               counterText: snapshot.data,
               errorText: snapshot.error
@@ -136,9 +136,10 @@ class LoginPage extends StatelessWidget {
             borderRadius: BorderRadius.circular(5.0)
           ),
           elevation: 0.0,
-          color: Colors.deepPurple,
+          color: Color.fromRGBO(169, 80, 162, 1.0),
           textColor: Colors.white,
           onPressed: snapshot.hasData ? () => _login(bloc, context) : null,
+          // onPressed: () {},
         );
       },
     );
@@ -167,8 +168,8 @@ class LoginPage extends StatelessWidget {
       decoration: BoxDecoration(
         gradient: LinearGradient(
           colors: <Color> [
-            Color.fromRGBO(63, 63, 156, 1.0),
-            Color.fromRGBO(90, 70, 178, 1.0),
+            Color.fromRGBO(88, 72, 147, 1.0),
+            Color.fromRGBO(169, 80, 162, 1.0),
           ]
         )
       ),
