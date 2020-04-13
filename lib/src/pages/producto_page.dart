@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fluttervalidarformulariofh/src/models/producto_model.dart';
 import 'package:fluttervalidarformulariofh/src/utils/utils.dart' as utils;
 
 class ProductoPage extends StatefulWidget {
@@ -9,7 +10,9 @@ class ProductoPage extends StatefulWidget {
 }
 
 class _ProductoPageState extends State<ProductoPage> {
+
   final formKey = GlobalKey<FormState>();
+  ProductoModel producto = new ProductoModel();
 
   @override
   Widget build(BuildContext context) {
@@ -36,6 +39,7 @@ class _ProductoPageState extends State<ProductoPage> {
               children: <Widget>[
                 _crearNombre(),
                 _crearPrecio(),
+                _crearDisponible(),
                 _crearBoton(),
               ],
             ),
@@ -45,13 +49,30 @@ class _ProductoPageState extends State<ProductoPage> {
     );
   }
 
+
+  Widget _crearDisponible() {
+
+    return SwitchListTile(
+      value: producto.disponible,
+      title: Text('Disponible'),
+      onChanged: (value) => setState(() {
+
+        producto.disponible = value;
+        
+      }),
+    );
+
+  }
+
   Widget _crearNombre() {
 
     return TextFormField(
+      initialValue: producto.titulo,
       textCapitalization: TextCapitalization.sentences,
       decoration: InputDecoration(
         labelText: 'Producto',
       ),
+      onSaved: (value) => producto.titulo = value,
       validator: (value) {
 
         return (value.length < 3) ? 'Ingrese el nombre del producto' : null;
@@ -64,10 +85,12 @@ class _ProductoPageState extends State<ProductoPage> {
   Widget _crearPrecio() {
 
     return TextFormField(
+      initialValue: producto.valor.toString(),
       keyboardType: TextInputType.numberWithOptions(decimal: true),
       decoration: InputDecoration(
         labelText: 'Precio',
       ),
+      onSaved: (value) => producto.valor = double.parse(value),
       validator: (value) {
 
         return (utils.isNumeric(value)) ? null : 'Solo números';
@@ -96,7 +119,14 @@ class _ProductoPageState extends State<ProductoPage> {
 
     if(!formKey.currentState.validate()) return;
 
+    // ejecuta todos los metodo save que esten dentro del formulario
+    formKey.currentState.save();
+
     print('Todo OK...');
+
+    print(producto.titulo);
+    print(producto.valor);
+    print(producto.disponible);
 
   }
 }
