@@ -13,11 +13,20 @@ class ProductoPage extends StatefulWidget {
 class _ProductoPageState extends State<ProductoPage> {
 
   final formKey = GlobalKey<FormState>();
+
   ProductoModel producto = new ProductoModel();
   final productosProvider = new ProductosProvider();
 
   @override
   Widget build(BuildContext context) {
+
+    // Se toma el argumento en caso de que venga
+    final ProductoModel prodData = ModalRoute.of(context).settings.arguments;
+    if(prodData != null) {
+      producto = prodData;
+    }
+
+
     return Scaffold(
       appBar: AppBar(
         title: Text('Producto'),
@@ -130,7 +139,12 @@ class _ProductoPageState extends State<ProductoPage> {
     print(producto.valor);
     print(producto.disponible);
 
-    productosProvider.crearProducto(producto);
+    if(producto.id == null) {
+      productosProvider.crearProducto(producto);
+    }else {
+      productosProvider.editarProducto(producto);
+    }
+
 
   }
 }
