@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:fluttervalidarformulariofh/src/bloc/provider.dart';
 
-class LoginPage extends StatelessWidget {
-  const LoginPage({Key key}) : super(key: key);
+class RegistroPage extends StatelessWidget {
+  const RegistroPage({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -50,7 +50,7 @@ class LoginPage extends StatelessWidget {
             ),
             child: Column(
               children: <Widget>[
-                Text('Ingreso', style: TextStyle(fontSize: 20.0)),
+                Text('Crear cuenta', style: TextStyle(fontSize: 20.0)),
                 SizedBox(height: 60.0),
                 _crearEmail(bloc),
                 SizedBox(height: 30.0),
@@ -62,8 +62,8 @@ class LoginPage extends StatelessWidget {
           ),
         
           FlatButton(
-            child: Text('Crear una nueva cuenta', style: TextStyle(color: Color.fromRGBO(169, 80, 162, 1.0))),
-            onPressed: () => Navigator.pushReplacementNamed(context, 'registro'),
+            child: Text('¿Ya tienes cuenta? Login', style: TextStyle(color: Color.fromRGBO(169, 80, 162, 1.0))),
+            onPressed: () => Navigator.pushReplacementNamed(context, 'login'),
           ),
           SizedBox(height: 100.0,)
         ],
