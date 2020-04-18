@@ -22,29 +22,6 @@ class MyApp extends StatelessWidget {
 
     final prefs = new PreferenciasUsuario();
 
-    // if(prefs.token != '') Navigator.of(context).pushReplacementNamed('home');
-
-    Theme(
-      // Crea un tema único con "ThemeData"
-      data: ThemeData(
-        accentColor: Colors.yellow,
-      ),
-      child: FloatingActionButton(
-        onPressed: () {},
-        child: Icon(Icons.add),
-      ),
-    );
-
-    Theme(
-      // Encuentra y amplía el tema padre usando "copyWith". Por favor observa la siguiente 
-      // sección para más información sobre `Theme.of`.
-      data: Theme.of(context).copyWith(accentColor: Colors.yellow),
-      child: FloatingActionButton(
-        onPressed: null,
-        child: Icon(Icons.add),
-      ),
-    );
-
     return Provider(
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

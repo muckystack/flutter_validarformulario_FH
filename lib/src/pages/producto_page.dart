@@ -204,7 +204,7 @@ class _ProductoPageState extends State<ProductoPage> {
       if(foto?.path != null) {
 
         return FadeInImage(
-          image: AssetImage(foto?.path),
+          image: AssetImage(foto.path),
           placeholder: AssetImage('assets/load.gif'),
           height: 300.0,
           fit: BoxFit.cover,
