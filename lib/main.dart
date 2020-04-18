@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
 
     final prefs = new PreferenciasUsuario();
 
-    print(prefs.token);
+    // if(prefs.token != '') Navigator.of(context).pushReplacementNamed('home');
 
     Theme(
       // Crea un tema único con "ThemeData"
@@ -49,7 +49,7 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Material App',
-        initialRoute: 'login',
+        initialRoute: (prefs.token != '') ? 'home' : 'login',
         routes: {
           'login' : (BuildContext context) => LoginPage(),
           'registro' : (BuildContext context) => RegistroPage(),
