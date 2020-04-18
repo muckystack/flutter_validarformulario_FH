@@ -201,11 +201,24 @@ class _ProductoPageState extends State<ProductoPage> {
 
     }else {
 
-      return Image(
-        image: AssetImage(foto?.path ?? 'assets/404.jpg'),
-        height: 300.0,
-        fit: BoxFit.cover,
-      );
+      if(foto?.path != null) {
+
+        return FadeInImage(
+          image: AssetImage(foto?.path),
+          placeholder: AssetImage('assets/load.gif'),
+          height: 300.0,
+          fit: BoxFit.cover,
+        );
+
+      }else {
+
+        return Image(
+          image: AssetImage('assets/404.jpg'),
+          height: 300.0,
+          fit: BoxFit.cover,
+        );
+
+      }
 
     }
 
