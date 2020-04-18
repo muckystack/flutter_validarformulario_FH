@@ -33,7 +33,7 @@ class ProductosProvider {
   
   Future<bool>editarProducto(ProductoModel producto) async {
 
-    final url = '$_url/productos/${producto.id}.json=${_prefs.token}';
+    final url = '$_url/productos/${producto.id}.json?auth=${_prefs.token}';
 
     final resp =  await http.put(url, body: productoModelToJson(producto));
 
@@ -47,7 +47,7 @@ class ProductosProvider {
 
   Future<List<ProductoModel>> cargarProductos() async {
 
-    final url = '$_url/productos.json=${_prefs.token}';
+    final url = '$_url/productos.json?auth=${_prefs.token}';
     final resp = await http.get(url);
 
     final Map<String, dynamic> decodeData = json.decode(resp.body);
@@ -73,7 +73,7 @@ class ProductosProvider {
   // Eliminar un registro en firebase
   Future<int> borrarProducto(String id) async {
 
-    final url = '$_url/productos/$id.json=${_prefs.token}';
+    final url = '$_url/productos/$id.json?auth=${_prefs.token}';
     final resp = await http.delete(url);
 
     print(json.decode(resp.body));
