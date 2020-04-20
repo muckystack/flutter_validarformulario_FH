@@ -193,36 +193,20 @@ class _ProductoPageState extends State<ProductoPage> {
 
   Widget _mostrarFoto() {
 
-    if(producto.fotoUrl != null) {
-
-      return FadeInImage(
-        image: NetworkImage(producto.fotoUrl),
-        placeholder: AssetImage('assets/load.gif'),
-        height: 300.0,
-        fit: BoxFit.contain
-      );
-
-    }else {
-
-      if(foto?.path != null) {
-
-
-        return Image(
-          image: AssetImage(foto.path),
-          height: 300.0,
+    if (producto.fotoUrl != null) {
+ 
+      return Container();
+ 
+    } else {
+ 
+      if( foto != null ){
+        return Image.file(
+          foto,
           fit: BoxFit.cover,
-        );
-
-      }else {
-
-        return Image(
-          image: AssetImage('assets/404.jpg'),
           height: 300.0,
-          fit: BoxFit.cover,
         );
-
       }
-
+      return Image.asset('assets/no-image.png');
     }
 
   }
