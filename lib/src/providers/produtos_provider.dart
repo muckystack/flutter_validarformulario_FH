@@ -56,6 +56,11 @@ class ProductosProvider {
 
     if(decodeData == null) return [];
 
+    
+    // Validación para la sesión del token
+    if(decodeData['error'] != null) return [];
+
+
     decodeData.forEach((id, prod) {
 
       final prodTemp = ProductoModel.fromJson(prod);

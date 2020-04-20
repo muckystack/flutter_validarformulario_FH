@@ -1,8 +1,9 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:fluttervalidarformulariofh/src/bloc/productos_bloc.dart';
+import 'package:fluttervalidarformulariofh/src/bloc/provider.dart';
 import 'package:fluttervalidarformulariofh/src/models/producto_model.dart';
-import 'package:fluttervalidarformulariofh/src/providers/produtos_provider.dart';
 import 'package:fluttervalidarformulariofh/src/utils/utils.dart' as utils;
 import 'package:image_picker/image_picker.dart';
 
@@ -20,8 +21,8 @@ class _ProductoPageState extends State<ProductoPage> {
   final formKey = GlobalKey<FormState>();
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
+  ProductosBloc productosBloc;
   ProductoModel producto = new ProductoModel();
-  final productosProvider = new ProductosProvider();
   bool _guardando = false;
 
   File foto;
@@ -30,6 +31,8 @@ class _ProductoPageState extends State<ProductoPage> {
 
   @override
   Widget build(BuildContext context) {
+
+    productosBloc = Provider.productosBloc(context);
 
     // Se toma el argumento en caso de que venga
     final ProductoModel prodData = ModalRoute.of(context).settings.arguments;
@@ -152,7 +155,7 @@ class _ProductoPageState extends State<ProductoPage> {
 
     if(foto != null) {
 
-      producto.fotoUrl = await productosProvider.subirImagen(foto);
+      producto.fotoUrl = await productosBloc.subirFoto(foto);
 
     }
     
@@ -162,9 +165,9 @@ class _ProductoPageState extends State<ProductoPage> {
     print(producto.disponible);
 
     if(producto.id == null) {
-      productosProvider.crearProducto(producto);
+      productosBloc.agregarProductos(producto);
     }else {
-      productosProvider.editarProducto(producto);
+      productosBloc.editarProductos(producto);
     }
 
     mostrarSnackbar('Registro guardado');
